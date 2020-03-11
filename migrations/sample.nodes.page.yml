@@ -1,0 +1,74 @@
+id: sample_nodes_page
+label: Sample Nodes - Page
+migration_tags: sample
+source:
+  plugin: embedded_data
+  data_rows:
+    -
+      title: Sample Page 1
+      path: /sample_page_1
+      content_items:
+        -
+          sample_id: image1
+        -
+          sample_id: text1
+        -
+          sample_id: text2
+        -
+          sample_id: text3
+    -
+      title: Sample Page 2
+      path: /sample_page_2
+      content_items:
+        -
+          sample_id: image1
+        -
+          sample_id: text1
+        -
+          sample_id: text2
+        -
+          sample_id: text3
+    -
+      title: Sample Page 3
+      path: /sample_page_3
+      content_items:
+        -
+          sample_id: image1
+        -
+          sample_id: text1
+        -
+          sample_id: text2
+        -
+          sample_id: text3
+  ids:
+    title:
+      type: string
+process:
+  type:
+    plugin: default_value
+    default_value: page
+  status:
+    plugin: default_value
+    default_value: 1
+  title: title
+  'path/pathauto':
+    plugin: default_value
+    default_value: 0
+  'path/alias': path
+  field_content:
+    plugin: sub_process
+    source: content_items
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration:
+          - sample_paragraphs_text
+          - sample_paragraphs_image
+        source: sample_id
+      target_revision_id: '@target_id'
+destination:
+  plugin: entity:node
+migration_dependencies:
+  required:
+    - sample_paragraphs_text
+    - sample_paragraphs_image

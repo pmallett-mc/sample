@@ -1,0 +1,38 @@
+id: sample_paragraphs_image
+label: Sample Paragraphs - Image
+migration_tags: sample
+source:
+  plugin: embedded_data
+  data_rows:
+    -
+      sample_id: image1
+      file_fid: 1
+      caption_text: |
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    -
+      sample_id: image2
+      file_fid: 2
+      caption_text: |
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  ids:
+    sample_id:
+      type: string
+process:
+  type:
+    plugin: default_value
+    default_value: image
+  field_image:
+    plugin: migration_lookup
+    migration: sample_files
+    source: file_fid
+  'field_caption/value': caption_text
+  'field_caption/format':
+    plugin: default_value
+    default_value: basic_html
+destination:
+  plugin: entity:paragraph
+migration_dependencies:
+  required:
+    - sample_files

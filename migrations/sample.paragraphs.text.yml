@@ -1,0 +1,34 @@
+id: sample_paragraphs_text
+label: Sample Paragraphs - Text
+migration_tags: sample
+source:
+  plugin: embedded_data
+  data_rows:
+    -
+      sample_id: text1
+      body_text: |
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    -
+      sample_id: text2
+      body_text: |
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    -
+      sample_id: text3
+      body_text: |
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  ids:
+    sample_id:
+      type: string
+process:
+  type:
+    plugin: default_value
+    default_value: text
+  'field_body/value': body_text
+  'field_body/format':
+    plugin: default_value
+    default_value: basic_html
+destination:
+  plugin: entity:paragraph

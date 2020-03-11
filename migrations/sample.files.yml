@@ -1,0 +1,51 @@
+id: sample_files
+label: Sample Files
+migration_tags: sample
+source:
+  plugin: embedded_data
+  data_rows:
+    -
+      fid: 1
+      filename: sample1.jpg
+    -
+      fid: 2
+      filename: sample2.jpg
+  ids:
+    fid:
+      type: integer
+  constants:
+    files_path_rel: modules/custom/sample/files/
+    dest_path: public://
+process:
+  docroot:
+    plugin: callback
+    callable: realpath
+    source: '.'
+  files_path:
+    plugin: concat
+    source:
+      - '@docroot'
+      - constants/files_path_rel
+    delimiter: /
+  file_source:
+    plugin: concat
+    source:
+      - '@files_path'
+      - filename
+  file_dest:
+    plugin: concat
+    source:
+      - constants/dest_path
+      - filename
+  uid:
+    plugin: default_value
+    default_value: 1
+  fid: fid
+  filename: filename
+  uri:
+    plugin: file_copy
+    source:
+      - '@file_source'
+      - '@file_dest'
+destination:
+  plugin: entity:file

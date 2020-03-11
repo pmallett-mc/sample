@@ -1,0 +1,7 @@
+name: Sample Content
+type: module
+description: Imports sample content using Migrate
+core: 8.x
+package: Custom
+dependencies:
+  - migrate
