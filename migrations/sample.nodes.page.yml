@@ -16,6 +16,8 @@ source:
           sample_id: text2
         -
           sample_id: text3
+      link_uri: http://www.example.com/1
+      link_text: Click here 1
     -
       title: Sample Page 2
       path: /sample_page_2
@@ -28,6 +30,8 @@ source:
           sample_id: text2
         -
           sample_id: text3
+      link_uri: http://www.example.com/2
+      link_text: Click here 2
     -
       title: Sample Page 3
       path: /sample_page_3
@@ -40,6 +44,8 @@ source:
           sample_id: text2
         -
           sample_id: text3
+      link_uri: http://www.example.com/3
+      link_text: Click here 3
   ids:
     title:
       type: string
@@ -66,6 +72,8 @@ process:
           - sample_paragraphs_image
         source: sample_id
       target_revision_id: '@target_id'
+  'field_link/uri': link_uri
+  'field_link/title': link_text
 destination:
   plugin: entity:node
 migration_dependencies:
