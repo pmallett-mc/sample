@@ -14,6 +14,8 @@ source:
     fid:
       type: integer
   constants:
+    # You may need to change this path if you cannot place your module
+    # in a directory called simply “sample”.
     files_path_rel: modules/custom/sample/files/
     dest_path: public://
 process:
