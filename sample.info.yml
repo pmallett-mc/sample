@@ -2,6 +2,11 @@ name: Sample Content
 type: module
 description: Imports sample content using Migrate
 core: 8.x
-package: Custom
+core_version_requirement: ^8 || ^9
+package: Example Project
 dependencies:
+  - file
+  - link
   - migrate
+  - path
+  - paragraphs
