@@ -1,0 +1,27 @@
+uuid: f78cd301-7348-4a30-a7cb-d701a6d5c62f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - paragraphs.paragraphs_type.image
+  module:
+    - file
+id: paragraph.image.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: image
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: jpg
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file
