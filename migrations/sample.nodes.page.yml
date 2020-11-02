@@ -23,7 +23,7 @@ source:
       path: /sample_page_2
       content_items:
         -
-          sample_id: image1
+          sample_id: image2
         -
           sample_id: text1
         -

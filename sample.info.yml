@@ -5,8 +5,8 @@ core: 8.x
 core_version_requirement: ^8 || ^9
 package: Example Project
 dependencies:
-  - file
-  - link
-  - migrate
-  - path
-  - paragraphs
+  - drupal:file
+  - drupal:link
+  - drupal:migrate
+  - drupal:path
+  - paragraphs:paragraphs
